@@ -1,0 +1,169 @@
+main {
+	color: #FEFEFE;
+	font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+	font-style: normal;
+	font-weight: 900;
+	font-size: 72px;
+	line-height: 88px;
+}
+
+h2 {
+	font-size: 64px;
+	text-align: center;
+	font-weight: 900;
+}
+h3 {
+	font-size: 36px;
+	text-align: center;
+	font-style: normal;
+	line-height: 52px;
+	font-weight: 500;
+}
+h4 {
+	font-weight: 700;
+	font-size: 24px;
+	margin: 0;
+	margin-right: 68px;
+	
+}
+
+a {
+	background-color: transparent;
+	color: #FEFEFE;
+	text-decoration: none;
+}
+
+a:hover {
+  color: #f9c546;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	background-repeat: no-repeat;
+	width: 50%;
+  margin: 0 auto;
+}
+.positionH1 {
+	padding-top: 130px;
+	margin-top: 0;
+	margin-bottom: 40px;
+}
+.positionH2 {
+	margin-bottom: 80px;
+}
+.container  {
+	background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.1), 80vh, rgba(0, 0, 0, 1)), url(../../img/fon.png);
+	background-repeat: no-repeat;
+	background-color: #000;
+	width: 100%;
+  min-height: 100vh;
+}
+
+.field {
+	height: 550px;
+	width: 730px;
+	margin: 0 auto;
+}
+
+.element {
+	width: 100%;
+	background: #222222ed;
+	margin: 0 auto;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	display: flex;
+  align-items: center;
+}
+.info {
+	width: 100%;
+}
+
+.infoPosition {
+	padding: 30px 0;
+	
+}
+
+.poster {
+	height: 141px;
+	width: 95px;
+	margin: 15px;
+	background-size: cover;
+	display: inline;
+  float: left;
+}
+.poster img {
+	max-width: 95px;
+	height: auto;
+	border-radius: 8px;
+}
+
+.infoList {
+	margin: 0 0 15px 0; 
+	padding: 0;
+
+}
+.infoItem {
+	display: inline; 
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+
+}
+.positionItemRight {
+  padding-right: 10px; 
+}
+.positionItemLeft {
+	padding-left: 10px;
+}
+
+.borderItem {
+  border-right: 1px solid #FBFBFB; 
+}
+
+.line {
+	border: 1px solid rgba(255, 255, 255, 0.05);
+	margin-right: 20px;
+	margin-top: 15px;
+}
+.award {
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 15px;
+	max-width: 296px;
+	color: #FBFBFB;
+}
+
+.titleAndRating {
+	display: flex;
+	justify-content: space-between;
+	/*padding-top: 30px;*/
+	padding-right: 20px;
+	margin-bottom: 12px;
+}
+.rating {
+	background-color: #FAC539;
+	height: 30px;
+	width: 87px;
+	padding: 7px 12px;
+  border-radius: 8px;
+}
+
+.rating p {
+	font-weight: 900;
+	font-size: 12px;
+	line-height: 15px;
+	color: #000000;
+	margin: 0;
+}
+
+.textButtonPosition {
+	margin-right: 8px;
+}
+
+
+
+
