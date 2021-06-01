@@ -11,11 +11,11 @@ import result from '../../data.js';
 const MovieDetails = ({id}) => {
 	
 	const fetchMovie = (id) => {
-		// return fetch(`https://imdb-api.com/en/API/Title/k_9q1z5jr0/${id}/FullActor,Posters,Trailers`)
-		// 	.then(res => res.json())
-		// 	.then(result => setMovie(result))
+		return fetch(`https://imdb-api.com/en/API/Title/k_6saccxi8/${id}/FullActor,Posters,Trailers`)
+			.then(res => res.json())
+			.then(result => setMovie(result))
 			// тестовый файл для подстановки данных
-		setMovie(result) 
+		// setMovie(result) 
 	}
 
 	const [movie, setMovie] = useState()
@@ -41,7 +41,7 @@ const MovieDetails = ({id}) => {
 					</nav>			
 				</div>
 			</header>
-			<section className="description descriptionPoster" style={{ backgroundImage: `url(${movie.posters.backdrops[0].link})` }}>
+			<section className="description descriptionPoster" style={{ backgroundImage: `linear-gradient(to left, rgba(0, 0, 0, 0.2), 50%, rgba(0, 0, 0, 1)), url(${movie.posters.backdrops[0].link}) `}}>
 				<div className='content'>
 					<div className="film">
 						<h1 className="filmTitle">{movie.title}</h1>
