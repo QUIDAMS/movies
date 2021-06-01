@@ -70,7 +70,6 @@ export default class  App extends Component {
 				                <source src={sample} type="video/mp4" />
 				                Your browser does not support the video tag.
 				            </video>
-
 				            <div className='content-video'>
 				                <div className='subContent' >
 				                  <div className="field">
@@ -102,7 +101,6 @@ export default class  App extends Component {
 	            }/>
 			      </Switch>
 					</main>
-						
 				</Router>
 			)
 		}
