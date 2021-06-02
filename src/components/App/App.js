@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 
-import sample from '../../video/AWAKENING.mp4';
-
 import List from '../List';
 import {
   BrowserRouter as Router,
@@ -67,8 +65,7 @@ export default class  App extends Component {
 
 							  	<div className="container-video" >
 				            <video autoPlay="autoplay" loop="loop" muted className='video' >
-				                <source src={sample} type="video/mp4" />
-				                Your browser does not support the video tag.
+				              <source src='https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1eoWRcPP_tj_89kGM0xt2mIj15MOH1N6w' type="video/mp4" />
 				            </video>
 				            <div className='content-video'>
 				                <div className='subContent' >
