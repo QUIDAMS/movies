@@ -1,5 +1,5 @@
 {
-  "homepage": "http://QUIDAMS.github.io/movies",
+  "homepage": "http://quidams.github.io/movies",
   "name": "movies",
   "version": "0.1.0",
   "private": true,
@@ -41,6 +41,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^3.2.0",
     "movies": "^1.0.0"
   }
 }
