@@ -27,7 +27,6 @@ h4 {
 	font-size: 24px;
 	margin: 0;
 	margin-right: 68px;
-	
 }
 
 a {
@@ -62,8 +61,6 @@ a:hover {
 	width: 100%;
   min-height: 100vh;
 }
-
-
 
 .field {
 	height: 550px;
@@ -165,8 +162,6 @@ a:hover {
 .textButtonPosition {
 	margin-right: 8px;
 }
-
-
 
 .container-video {
   position: relative;

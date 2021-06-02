@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import List from '../List';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
