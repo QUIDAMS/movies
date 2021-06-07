@@ -57,7 +57,7 @@ export default class  App extends Component {
       return <div>Загрузка...</div>;
     } else {
     	return (
-				<Router>
+				<Router  basename='/'>
 					<main>
 						<Switch>
 							<Route path='/' exact >
@@ -70,8 +70,8 @@ export default class  App extends Component {
 				            <div className='content-video'>
 				                <div className='subContent' >
 				                  <div className="field">
-														<h2 className="positionH1">Unlimited movies, TV shows, and more.</h2>
-														<h3 className="positionH2">Watch anywhere. Cancel anytime.</h3>
+														<h2 className="positionH2">Unlimited movies, TV shows, and more.</h2>
+														<h3 className="positionH3">Watch anywhere. Cancel anytime.</h3>
 														<div className="searchForm">
 														  <form>
 															  <input 

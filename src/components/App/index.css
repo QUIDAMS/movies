@@ -3,6 +3,7 @@ main {
 	font-family: 'Montserrat', sans-serif;
 }
 
+
 h1 {
 	font-style: normal;
 	font-weight: 900;
@@ -46,13 +47,13 @@ a:hover {
 	width: 50%;
   margin: 0 auto;
 }
-.positionH1 {
-	padding-top: 130px;
-	margin-top: 0;
-	margin-bottom: 40px;
-}
 .positionH2 {
-	margin-bottom: 80px;
+	padding-top: 15%;
+	margin-top: 0;
+	margin-bottom: 4%;
+}
+.positionH3 {
+	margin-bottom: 10%;
 }
 .container  {
 	/*background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.1), 80vh, rgba(0, 0, 0, 1)), url(../../img/fon.png);*/
@@ -165,7 +166,7 @@ a:hover {
 
 .container-video {
   position: relative;
-  min-height: 300px;
+  min-height: 100vh;
   max-height: 800px;
   overflow: hidden;
 }
@@ -203,4 +204,40 @@ a:hover {
   display: block;
   margin: 15px auto;
   border: #f1f1f1 1px solid;
+}
+
+@media (max-width: 1200px){
+  .container{
+    background-color: black;
+  }
+}
+
+@media (max-width: 992px){
+ 
+}
+
+@media (max-width: 768px){
+  .field {
+		height: 450px;
+		width: 75%;
+		margin: 0 auto;
+	}
+	h2 {
+		font-size: 32px;
+	}
+	h3 {
+		font-size: 18px;
+	}
+}
+
+@media (max-width : 576px){
+  .field {
+		width: 90%;
+	}
+	.container-video {
+		background-image: url(../../img/fon.png);
+	}
+	.video {
+		display: none;
+	}
 }
