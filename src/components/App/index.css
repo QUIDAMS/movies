@@ -27,7 +27,7 @@ h4 {
 	font-weight: 700;
 	font-size: 24px;
 	margin: 0;
-	margin-right: 68px;
+	margin-right: 1%;
 }
 
 a {
@@ -81,9 +81,9 @@ a:hover {
 .info {
 	width: 100%;
 }
-
+ 
 .infoPosition {
-	padding: 30px 0;
+	padding: 30px 30px;
 
 }
 
@@ -210,10 +210,40 @@ a:hover {
   .container{
     background-color: black;
   }
+  .list {
+		width: 70%;
+	}
 }
 
 @media (max-width: 992px){
- 
+	.titleAndRating {
+		padding-right: 5%;
+    margin-bottom: 3%;
+    align-items: center;
+	}
+
+	.list {
+		width: 70%;
+	}
+
+	h4 {
+		font-size: 18px;
+	}
+	.infoItem {
+		font-size: 13px;
+	}
+	.rating {
+		height: 25px;
+    width: 68px;
+    padding: 5px 8px;
+	}
+	.rating p {
+		font-size: 10px;
+	}
+	.award {
+		font-size: 10px;
+	}
+
 }
 
 @media (max-width: 768px){
@@ -228,10 +258,42 @@ a:hover {
 	h3 {
 		font-size: 18px;
 	}
+
+	.titleAndRating {
+		padding-right: 4%;
+    margin-bottom: 2%;
+	}
+	.list {
+		width: 75%;
+	}
+
+	h4 {
+		font-size: 16px;
+	}
+	.infoItem {
+		font-size: 10px;
+	}
+	.rating {
+		height: 20px;
+    width: 60px;
+    padding: 3px 4px;
+	}
+	.rating p {
+		font-size: 9px;
+	}
+	.award {
+		font-size: 9px;
+	}
+	.infoPosition {
+		padding: 15px 0;
+	}
 }
 
 @media (max-width : 576px){
   .field {
+		width: 90%;
+	}
+	.list {
 		width: 90%;
 	}
 	.container-video {
