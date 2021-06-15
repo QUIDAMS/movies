@@ -19,10 +19,11 @@
 	justify-content: space-between;
 	padding: 1% 0;
 }
-.logo {
+.logo::before {
 	font-weight: 300;
 	font-size: 24px;
 	line-height: 29px;
+	content: 'Richbee Shows';
 }
 
 .headerSearch {
@@ -32,12 +33,12 @@
 .headerSearch input {
 	width: 100%;
   height: 100%;
-  padding: 14px 0 14px 60px;
+  padding: 14px 0 14px 14%;
   border: 1px solid #1B1919;
   border-radius: 30px;
   outline: none;
   background: #1B1919;
-  color: #5F5F5F;;
+  color: #FAC539;
   font-family: Montserrat;
 	font-size: 18px;
 	line-height: 22px;
@@ -48,7 +49,7 @@
   top: 0;
   left: 	10px;
   width: 10%;
-  height: 50px;
+  height: 100%;
   border: none;
   background: #1B1919;
   border-radius: 30px 0px 0px 30px;
@@ -57,6 +58,10 @@
   font-weight: 400;
 	font-size: 18px;
 	line-height: 22px;
+}
+
+.headerSearch button:hover {
+	color: #FAC539;
 }
 
 .description {
@@ -98,7 +103,7 @@
 	background: transparent;
 	min-width: 199px;
   height: 64px;
-  border: 2px solid #FBFBFB;
+  border: 2px solid #FAC539;
 	box-sizing: border-box;
 	border-radius: 40px;
   margin-bottom: 50px;
@@ -160,6 +165,7 @@
 
 .alsoLikePosition {
 	margin-bottom: 19px;
+	text-align: start;
 }
 .descriptionPoster {
 	background-size: cover;
@@ -171,6 +177,7 @@
 	background-size: cover;
 	background-position: center;
 	margin-bottom: 3%;
+	height: 310px;
 }
 
 .similar:hover {
@@ -214,34 +221,161 @@
 }
 .similarTitle {
 	font-weight: 800;
-	font-size: 24px;
+	font-size: 22px;
 	line-height: 29px;
-	color: #FFFFFF;
-	margin: 10% 0;
+	color: #FEFEFE;
+	margin: 3% 0;
 
 }
 .similarItem {
 	display: inline-block;
 	font-weight: 500;
-	font-size: 14px;
+	font-size: 10px;
 	line-height: 17px;
-	color: #FFFFFF;
+	color: #FAC539;
 	padding-right: 10px;
+	margin: 0px;
+	border: 1px solid #fefefe8f;
+	border-radius: 8px;
+	padding: 2px;
 
 
 }
 .similarDescription {
 	font-weight: 400;
-	font-size: 14px;
+	font-size: 12px;
 	line-height: 18px;
 	color: #FFFFFF;
 }
 .infoSimilarSize {
-	padding: 10%;
+	padding: 8%;
 }
 .similarList {
 	padding-left: 0;
 }
 .nowrap {
 	white-space: nowrap;
+}
+
+@media (max-width: 1200px){
+	.similar {
+		width: 33%;
+		max-height: 310px;
+	}
+
+}
+
+@media (max-width: 992px){
+	
+
+	.film {
+		max-width: 75%;
+	}
+	.filmTitle {
+		font-size: 57px;
+	}
+	.ratingPosition{
+		font-size: 22px;
+	}
+	.headerSearch input {
+		padding: 14px 0 14px 17%;
+		font-size: 16px;
+	}
+	.headerSearch button {
+		font-size: 16px;
+	}
+}
+@media (max-width: 768px){
+	.similar {
+    width: 48%;
+    max-height: 370px;
+  }
+  .filmTitle {
+    font-size: 40px;
+    margin: 50px 0 30px 0;
+	}
+	.ratingPosition {
+    font-size: 20px;
+	}
+	.buttonWatch {
+		min-width: 160px;
+    height: 55px;
+	}
+	.buttonWatchText {
+		font-size: 21px;
+		padding: 0;
+		font-weight: 500;
+	}
+	.awardFilm{
+		font-size: 16px;
+	}
+	.pageTitle {
+		font-size: 30px;
+		line-height: 45px;
+		margin: 40px 0 30px 0;
+	}
+	.pageDescription {
+		font-size: 14px;
+		line-height: 25px;
+	}
+	.pageDescriptionPosition {
+    margin-bottom: 40px;
+	}
+}
+@media (max-width : 576px){
+	
+	.nav {
+		padding: 3% 0;
+	}
+	.film {
+		max-width: 95%;
+	}
+	.similar {
+    width: 80%;
+    max-height: 380px;
+  }
+  .similarsBox {
+  	justify-content: space-around;
+  }
+  .alsoLikePosition{
+  	text-align: center;
+  	margin-top: 0;
+  }
+  .logo::before {
+		font-size: 14px;
+		content: 'Richbee Shows';
+	}
+	.headerSearch input {
+		font-size: 14px;
+		width: 100%;
+		padding: 8px 0 8px 17%;
+	}
+	.headerSearch button {
+		font-size: 14px;
+		left: 7px;
+	}
+	.headerSearch {
+		width: 60%;
+		margin-left: 20px;
+	}
+	.filmTitle {
+    font-size: 35px;
+    margin: 35px 0 25px 0;
+	}
+	h1 {
+    line-height: 45px;
+	}
+	.ratingPosition {
+    font-size: 14px;
+    margin-right: 14px;
+    padding-right: 14px;
+	}
+	.awardFilm {
+    font-size: 14px;
+    font-weight: 400;
+	}
+	.buttonWatch {
+    min-width: 140px;
+    height: 45px;
+	}
 }

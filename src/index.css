@@ -19,7 +19,7 @@ form {
   width: 100%;
   height: 50px;
   padding: 14px 0 14px 28px;
-  border: 1px solid #4EA7F9;
+  border: 1px solid #FAC539;
   border-radius: 30px;
   outline: none;
   background: #FEFEFE;
@@ -35,7 +35,7 @@ form {
   width: 25%;
   height: 50px;
   border: none;
-  background: #4EA7F9;
+  background: #FAC539;;
   border-radius: 0px 30px 30px 0px;
   cursor: pointer;
 }

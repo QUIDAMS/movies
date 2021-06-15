@@ -26,12 +26,24 @@ const MovieDetails = ({id}) => {
 	}
   const onClose = () => setModal(false)
 
+  const array = movie.genres.split(',')
+  console.log('swdw', [array.length-1])
+
+  const allGenres = array.map((genre, i) => {
+  	const last = i === array.length - 1
+  	return (
+  		<li key={i} className={`ratingPosition ${last ? 'borderItem': 'mr-0 pr-0'}`}>
+  			{genre}{!last && <span>,&nbsp;</span>} 
+	  	</li>
+	  )
+	})
+
 	return(
 		<>
 			<header className="header">
 				<div className="content">
 					<nav className="nav">
-		  			<Link to="/"><div className="logo">Richbee Shows</div></Link>
+		  			<Link to="/"><div className="logo"></div></Link>
 						<form className='headerSearch'>
 							<input type="text" placeholder='Type here smth...'/>
 							<button type="submit"  >
@@ -52,7 +64,7 @@ const MovieDetails = ({id}) => {
 				  			</p>
 				  		</div>
 				  		<ul className="infoList">
-					  		<li className="ratingPosition borderItem">{movie.genres}</li>
+					  		{allGenres}
 					  		<li className="ratingPosition  borderItem">{movie.type}</li>
 					  		<li className="ratingPosition ">{movie.year}</li>
 					  	</ul>
