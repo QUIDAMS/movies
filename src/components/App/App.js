@@ -7,6 +7,7 @@ import {
   Route,
 } from "react-router-dom";
 import MovieDetails from '../MovieDetails';
+import result from '../../data.js'
 import './index.css';
 
 export default class  App extends Component {
@@ -14,31 +15,45 @@ export default class  App extends Component {
 		super(props);
 		this.state = {
 			error: null,
-      isLoaded: true,
       movies: [],
       movieId: null,
       value: '',
+      apiKeys: ['k_kjosvy72', 'k_axtondoz', 'k_6saccxi8', 'k_fzfbn315', 'k_sjo9zj6q', 'k_80c8bkdg', 'k_96ufdk3y'],
+      workingKey: null,
+      retries: 0 
 		}
 	}
+
+
 	getMovies = (e) => {
+		const { apiKeys, value, retries } = this.state;
 		e.preventDefault()
-    fetch(`https://imdb-api.com/en/API/SearchTitle/k_6saccxi8/${this.state.value}`)
+    fetch(`https://imdb-api.com/en/API/SearchTitle/${apiKeys[retries]}/${value}`)
       .then(res => res.json())
       .then(
         (result) => {
-        	this.setState({movies: []})
+          if(result.errorMessage !== '' && retries < apiKeys.length) {
+          	console.log('workingKey', result)
+        		this.setState({ movies: [], retries: retries + 1 })
+        		return this.getMovies(e)
+          } else {
+          	this.setState({ workingKey: apiKeys[retries] })
+						
+          }
         	result.results.map(result => 
-          fetch(`https://imdb-api.com/en/API/Title/k_6saccxi8/${result.id}/FullActor,Posters,Trailers`)
+          fetch(`https://imdb-api.com/en/API/Title/${apiKeys[retries]}/${result.id}/FullActor,Posters,Trailers`)
           	.then(res => res.json())
           	.then(
           	(result) => {
-          		this.setState({movies: [...this.state.movies, result]})
+          		this.setState((prevState) => ({ movies: [...prevState.movies, result] }))
+        		
+
           	}
         	)
         )},
+
         (error) => {
           this.setState({
-            isLoaded: true,
             error
           });
         }
@@ -50,11 +65,9 @@ export default class  App extends Component {
   }
 
 	render(){
-		const { error, isLoaded, movies, value } = this.state;
+		const { error, movies, value, workingKey } = this.state;
     if (error) {
       return <div>Ошибка: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Загрузка...</div>;
     } else {
     	return (
 				<Router  basename='/'>
@@ -92,8 +105,11 @@ export default class  App extends Component {
 								</div>
 							</Route>
 							<Route path='/movies/:id' render={
-	              (elem) => { 
-	                return <MovieDetails id={elem.match.params.id}/>
+          	
+								
+	              (elem) => {
+									{ console.log('workingKeyApp', workingKey) }
+	                return <MovieDetails id={elem.match.params.id} workingKey={workingKey}/>
 	              } 
 	            }/>
 			      </Switch>

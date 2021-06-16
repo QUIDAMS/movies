@@ -8,10 +8,10 @@ import './style.css';
 import result from '../../data.js'; 
 
 
-const MovieDetails = ({id}) => {
-	
-	const fetchMovie = (id) => {
-		return fetch(`https://imdb-api.com/en/API/Title/k_6saccxi8/${id}/FullActor,Posters,Trailers`)
+const MovieDetails = ({id, workingKey}) => {
+	console.log('workingKey', workingKey)
+	const fetchMovie = (id, workingKey) => {
+		return fetch(`https://imdb-api.com/en/API/Title/${workingKey}/${id}/FullActor,Posters,Trailers`)
 			.then(res => res.json())
 			.then(result => setMovie(result))
 			// тестовый файл для подстановки данных
@@ -21,13 +21,12 @@ const MovieDetails = ({id}) => {
 	const [movie, setMovie] = useState()
 	const [isModal, setModal] = useState(false)
 	if (!movie) {
-		fetchMovie(id)
+		fetchMovie(id, workingKey)
 		return null
 	}
   const onClose = () => setModal(false)
 
   const array = movie.genres.split(',')
-  console.log('swdw', [array.length-1])
 
   const allGenres = array.map((genre, i) => {
   	const last = i === array.length - 1
@@ -37,7 +36,7 @@ const MovieDetails = ({id}) => {
 	  	</li>
 	  )
 	})
-
+  console.log(movie)
 	return(
 		<>
 			<header className="header">
@@ -53,12 +52,18 @@ const MovieDetails = ({id}) => {
 					</nav>			
 				</div>
 			</header>
-			<section className="description descriptionPoster" style={{ backgroundImage: `linear-gradient(to left, rgba(0, 0, 0, 0.2), 50%, rgba(0, 0, 0, 1)), url(${movie.posters.backdrops[0].link}) `}}>
+			<section 
+				className="description descriptionPoster" 
+				style={{ 
+					backgroundImage: `linear-gradient(to left, rgba(0, 0, 0, 0.2), 50%, rgba(0, 0, 0, 1)), 
+					url(${movie.posters.backdrops[0].link})`
+				}}
+			>
 				<div className='content'>
 					<div className="film">
 						<h1 className="filmTitle">{movie.title}</h1>
 						<div className="tags tagsPosition">
-							<div className="rating ratingPosition raitingMargin">
+							<div className="ratingDetails">
 				  			<p>
 				  				<span className="textButtonPosition">IMDb</span><span>{movie.imDbRating}</span>
 				  			</p>
@@ -76,7 +81,6 @@ const MovieDetails = ({id}) => {
 								Watch
 							</span>
 						</button>
-						{console.log(movie)}
             <Modal
           		header={false}
               visible={isModal}
