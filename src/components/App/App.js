@@ -18,7 +18,10 @@ export default class  App extends Component {
       movies: [],
       movieId: null,
       value: '',
-      apiKeys: ['k_kjosvy72', 'k_axtondoz', 'k_6saccxi8', 'k_fzfbn315', 'k_sjo9zj6q', 'k_80c8bkdg', 'k_96ufdk3y'],
+      apiKeys: [
+      	'k_kjosvy72', 'k_axtondoz', 'k_6saccxi8', 'k_fzfbn315', 
+      	'k_sjo9zj6q', 'k_80c8bkdg', 'k_96ufdk3y'
+      ],
       workingKey: null,
       retries: 0 
 		}
@@ -78,41 +81,47 @@ export default class  App extends Component {
 
 							  	<div className="container-video" >
 				            <video autoPlay="autoplay" loop="loop" muted className='video' >
-				              <source src='https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1eoWRcPP_tj_89kGM0xt2mIj15MOH1N6w' type="video/mp4" />
+				              <source 
+				              	src='https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1eoWRcPP_tj_89kGM0xt2mIj15MOH1N6w' 
+				              	type="video/mp4" 
+				              />
 				            </video>
 				            <div className='content-video'>
-				                <div className='subContent' >
-				                  <div className="field">
-														<h2 className="positionH2">Unlimited movies, TV shows, and more.</h2>
-														<h3 className="positionH3">Watch anywhere. Cancel anytime.</h3>
-														<div className="searchForm">
-														  <form>
-															  <input 
-															  	value={value} 
-															  	type="text" 
-															  	placeholder="Type here smth..."
-															  	onChange={this.changeSearch}
-															  />
-															  <button type="submit" onClick={this.getMovies} >
-															  </button>
-														  </form>
-														</div>
+			                <div className={`${movies.length === 0 ? 'subContent' : 'subListContent'}`}  >
+			                  <div className="field">
+													<h2 className="positionH2">Unlimited movies, TV shows, and more.</h2>
+													<h3 className="positionH3">Watch anywhere. Cancel anytime.</h3>
+													<div className="searchForm">
+													  <form>
+														  <input 
+														  	value={value} 
+														  	type="text" 
+														  	placeholder="Type here smth..."
+														  	onChange={this.changeSearch}
+														  />
+														  <button type="submit" onClick={this.getMovies} >
+														  </button>
+													  </form>
 													</div>
-				                </div>
+												</div>
+			                </div>
+							        <div>
+
+												{movies && movies.map(movie => <List movie={movie}/>)}
+											</div>
 				            </div>
 					        </div>
-									{movies && movies.map(movie => <List movie={movie}/>)}
 								</div>
 							</Route>
 							<Route path='/movies/:id' render={
-          	
-								
 	              (elem) => {
-									{ console.log('workingKeyApp', workingKey) }
 	                return <MovieDetails id={elem.match.params.id} workingKey={workingKey}/>
 	              } 
 	            }/>
 			      </Switch>
+            <footer className="footer">
+							Richbee Shows
+						</footer>
 					</main>
 				</Router>
 			)

@@ -70,9 +70,6 @@
 .descriptionPoster {
 }
 .tags {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
   padding: 0px;
   font-size: 16px;
   line-height: 140%;
@@ -226,16 +223,7 @@
 	max-width: 263px;
 	height: auto;
 }
-.footer {
-	background: #111111;
-	font-weight: 900;
-	font-size: 18px;
-	line-height: 22px;
-	color: #FEFEFE;
-	text-align: center;
-	padding: 39px 0;
 
-}
 .similarImgHover {
 	width: 263px;
 	height: 361px;
@@ -266,6 +254,11 @@
 
 }
 .similarDescription {
+
+	height: 73px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 18px;

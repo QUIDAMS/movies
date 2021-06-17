@@ -103,14 +103,16 @@ a:hover {
 
 .infoList {
 	margin: 0 0 15px 0; 
-	padding: 0;
+	padding: 0 7px 0 0;
 	line-height: 30px;
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .infoList li {
 	white-space: nowrap;
 	float: left;
+	margin-bottom: 12px;
 }
 
 .infoItem {
@@ -129,6 +131,7 @@ a:hover {
 
 .borderItem {
   border-right: 1px solid #FBFBFB; 
+  margin-bottom: 10px;
 }
 
 .line {
@@ -148,7 +151,7 @@ a:hover {
 	display: flex;
 	justify-content: space-between;
 	padding-right: 20px;
-	margin-bottom: 5%;
+	margin-bottom: 7%;
 	align-items: flex-start;
 }
 .rating {
@@ -174,7 +177,8 @@ a:hover {
   position: relative;
   min-height: 100vh;
   max-height: 800px;
-  overflow: hidden;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 .video {
@@ -189,27 +193,42 @@ a:hover {
   background-color: rgba(0, 0, 0, 0.3);
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 0;
 }
-.subContent {
+.subListContent {
   text-align: center;
   padding: 10px;
 }
-.subContent p {
+.subListContent p {
   color: #eeeeeead;
   font-size: 1.3rem;
 }
 
-.subContent img {
+.subListContent img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   display: block;
   margin: 15px auto;
   border: #f1f1f1 1px solid;
+}
+
+.subContent {
+	height: 100vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.footer {
+	font-weight: 900;
+	font-size: 16px;
+	line-height: 22px;
+	color: #FEFEFE;
+	text-align: center;
+	padding: 2% 0;
+	background: black;
+
 }
 
 @media (max-width: 1200px){
@@ -238,15 +257,11 @@ a:hover {
 	}
 	
 
-	.infoList {
-		flex-wrap: wrap;
-	}
-
 }
 
 @media (max-width: 768px){
   .field {
-		height: 450px;
+		height: 370px;
 		width: 75%;
 		margin: 0 auto;
 	}
@@ -266,8 +281,9 @@ a:hover {
 	.list {
 		width: 75%;
 	}
-
-	
+	.footer{
+		font-size: 12px;
+	}	
 	.infoPosition {
 		padding: 15px 8px;
 	}
@@ -276,9 +292,10 @@ a:hover {
 @media (max-width : 576px){
   .field {
 		width: 90%;
+		height: 350px;
 	}
 	.list {
-		width: 98%;
+		width: 95%;
 	}
 	.container-video {
 		background-image: url(../../img/fon.png);
@@ -314,7 +331,12 @@ a:hover {
 	.infoPosition {
 		padding: 15px 0;
 	}
+	.content-video {
 	
+	  background-image: none;
+	  background-color: rgba(0, 0, 0, 0.0);
+ 
+	}
 
 }
 
@@ -333,6 +355,7 @@ a:hover {
 	}
 	h4 {
 		padding-left: 7px;
+		font-size: 18px;
 	}
 }
 

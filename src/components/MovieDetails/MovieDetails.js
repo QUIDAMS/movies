@@ -2,10 +2,11 @@ import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import Modal from "../Modal";
 import Similar from "../Similar/";
+import AllGenres from "../AllGenres";
 
 import './style.css';
 // тестовый файл для подстановки данных
-import result from '../../data.js'; 
+// import result from '../../data.js'; 
 
 
 const MovieDetails = ({id, workingKey}) => {
@@ -26,17 +27,6 @@ const MovieDetails = ({id, workingKey}) => {
 	}
   const onClose = () => setModal(false)
 
-  const array = movie.genres.split(',')
-
-  const allGenres = array.map((genre, i) => {
-  	const last = i === array.length - 1
-  	return (
-  		<li key={i} className={`ratingPosition ${last ? 'borderItem': 'mr-0 pr-0'}`}>
-  			{genre}{!last && <span>,&nbsp;</span>} 
-	  	</li>
-	  )
-	})
-  console.log(movie)
 	return(
 		<>
 			<header className="header">
@@ -69,7 +59,7 @@ const MovieDetails = ({id, workingKey}) => {
 				  			</p>
 				  		</div>
 				  		<ul className="infoList">
-					  		{allGenres}
+					  		<AllGenres movie={movie} classes="ratingPosition  borderItem" />
 					  		<li className="ratingPosition  borderItem">{movie.type}</li>
 					  		<li className="ratingPosition ">{movie.year}</li>
 					  	</ul>
@@ -119,9 +109,7 @@ const MovieDetails = ({id, workingKey}) => {
 					</div>
 				</div>
 			</section>
-			<footer className="footer">
-				Richbee Shows
-			</footer>
+			
 		</>
 	)
 }
