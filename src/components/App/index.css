@@ -103,14 +103,16 @@ a:hover {
 
 .infoList {
 	margin: 0 0 15px 0; 
-	padding: 0;
+	padding: 0 7px 0 0;
 	line-height: 30px;
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .infoList li {
 	white-space: nowrap;
 	float: left;
+	margin-bottom: 12px;
 }
 
 .infoItem {
@@ -121,7 +123,7 @@ a:hover {
 
 }
 .positionItemRight {
-  padding-right: 10px; 
+  padding-right: 7px; 
 }
 .positionItemLeft {
 	padding-left: 10px;
@@ -129,16 +131,17 @@ a:hover {
 
 .borderItem {
   border-right: 1px solid #FBFBFB; 
+  margin-bottom: 10px;
 }
 
 .line {
 	border: 1px solid rgba(255, 255, 255, 0.05);
-	margin-right: 20px;
+	margin-right: 10px;
 	margin-top: 15px;
 }
 .award {
 	font-weight: 400;
-	font-size: 12px;
+	font-size: 14px;
 	line-height: 15px;
 	max-width: 296px;
 	color: #FBFBFB;
@@ -147,15 +150,14 @@ a:hover {
 .titleAndRating {
 	display: flex;
 	justify-content: space-between;
-	/*padding-top: 30px;*/
 	padding-right: 20px;
-	margin-bottom: 12px;
+	margin-bottom: 7%;
+	align-items: flex-start;
 }
 .rating {
 	background-color: #FAC539;
-	height: 30px;
-	width: 87px;
-	padding: 7px 12px;
+	display: inline-block;
+	padding: 2% 4%;
   border-radius: 8px;
 }
 
@@ -175,7 +177,8 @@ a:hover {
   position: relative;
   min-height: 100vh;
   max-height: 800px;
-  overflow: hidden;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 .video {
@@ -190,27 +193,42 @@ a:hover {
   background-color: rgba(0, 0, 0, 0.3);
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 0;
 }
-.subContent {
+.subListContent {
   text-align: center;
   padding: 10px;
 }
-.subContent p {
+.subListContent p {
   color: #eeeeeead;
   font-size: 1.3rem;
 }
 
-.subContent img {
+.subListContent img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   display: block;
   margin: 15px auto;
   border: #f1f1f1 1px solid;
+}
+
+.subContent {
+	height: 100vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.footer {
+	font-weight: 900;
+	font-size: 16px;
+	line-height: 22px;
+	color: #FEFEFE;
+	text-align: center;
+	padding: 2% 0;
+	background: black;
+
 }
 
 @media (max-width: 1200px){
@@ -225,41 +243,25 @@ a:hover {
 @media (max-width: 992px){
 	.titleAndRating {
 		padding-right: 5%;
-    margin-bottom: 2%;
-    align-items: center;
 	}
 
 	.list {
 		width: 70%;
 	}
-
-	h4 {
-		font-size: 18px;
-	}
 	.infoItem {
-		font-size: 13px;
+		font-size: 14px;
 	}
-	.rating {
-		height: 25px;
-    width: 68px;
-    padding: 5px 8px;
-	}
+
 	.rating p {
 		font-size: 10px;
 	}
-	.award {
-		font-size: 10px;
-	}
-
-	.infoList {
-		flex-wrap: wrap;
-	}
+	
 
 }
 
 @media (max-width: 768px){
   .field {
-		height: 450px;
+		height: 370px;
 		width: 75%;
 		margin: 0 auto;
 	}
@@ -275,37 +277,22 @@ a:hover {
 
 	.titleAndRating {
 		padding-right: 4%;
-    margin-bottom: 7%;
 	}
 	.list {
 		width: 75%;
 	}
-
-	h4 {
-		font-size: 16px;
-	}
-	.infoItem {
-		font-size: 10px;
-	}
-	.rating {
-		height: 20px;
-    width: 60px;
-    padding: 3px 4px;
-	}
-	.rating p {
-		font-size: 9px;
-	}
-	.award {
-		font-size: 9px;
-	}
+	.footer{
+		font-size: 12px;
+	}	
 	.infoPosition {
-		padding: 15px 0;
+		padding: 15px 8px;
 	}
 }
 
 @media (max-width : 576px){
   .field {
 		width: 90%;
+		height: 350px;
 	}
 	.list {
 		width: 95%;
@@ -316,11 +303,18 @@ a:hover {
 	.video {
 		display: none;
 	}
-	h4 {
-		padding-left: 7px;
-	}
+	
 	h3 {
     font-size: 14px;
+	}
+	.infoItem {
+    font-size: 13px;
+	}
+	.award {
+    font-size: 13px;
+	}
+	h4 {
+    padding-left: 7px;
 	}
 	.positionLine {
 		margin-left: 7px;
@@ -332,13 +326,36 @@ a:hover {
 		padding-left: 7px;
 	}
 	.poster {
-		margin: 12px 3px 12px 12px;
+		margin: 12px 4px 12px 7px;
 	}
+	.infoPosition {
+		padding: 15px 0;
+	}
+	.content-video {
+	
+	  background-image: none;
+	  background-color: rgba(0, 0, 0, 0.0);
+ 
+	}
+
+}
+
+@media (max-width : 373px){
 	.infoItem {
-		font-size: 8px;
+    font-size: 11px;
 	}
 	.award {
-    font-size: 8px;
+		display: none;
+	}
+	.line {
+		display: none;
+	}
+	.poster {
+		margin: 10px 1px 10px 5px;
+	}
+	h4 {
+		padding-left: 7px;
+		font-size: 18px;
 	}
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import AllGenres from "../AllGenres";
 
 const List = ({movie}) => {
 	return(
@@ -20,7 +21,7 @@ const List = ({movie}) => {
 			  	</div>
 			  	<ul className="infoList">
 			  		<li className="infoItem positionItemRight positionLeft576 borderItem">{movie.type}</li>
-			  		<li className="infoItem positionItemRight positionItemLeft borderItem">{movie.genres}</li>
+			  		<AllGenres movie={movie} classes="infoItem positionItemRight positionLeft576 borderItem positionItemLeft" />
 			  		<li className="infoItem positionItemRight positionItemLeft">{movie.year}</li>
 			  	</ul>
 			  	<hr className="line positionLine"/>

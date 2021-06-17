@@ -2,16 +2,17 @@ import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import Modal from "../Modal";
 import Similar from "../Similar/";
+import AllGenres from "../AllGenres";
 
 import './style.css';
 // тестовый файл для подстановки данных
-import result from '../../data.js'; 
+// import result from '../../data.js'; 
 
 
-const MovieDetails = ({id}) => {
-	
-	const fetchMovie = (id) => {
-		return fetch(`https://imdb-api.com/en/API/Title/k_6saccxi8/${id}/FullActor,Posters,Trailers`)
+const MovieDetails = ({id, workingKey}) => {
+	console.log('workingKey', workingKey)
+	const fetchMovie = (id, workingKey) => {
+		return fetch(`https://imdb-api.com/en/API/Title/${workingKey}/${id}/FullActor,Posters,Trailers`)
 			.then(res => res.json())
 			.then(result => setMovie(result))
 			// тестовый файл для подстановки данных
@@ -21,22 +22,10 @@ const MovieDetails = ({id}) => {
 	const [movie, setMovie] = useState()
 	const [isModal, setModal] = useState(false)
 	if (!movie) {
-		fetchMovie(id)
+		fetchMovie(id, workingKey)
 		return null
 	}
   const onClose = () => setModal(false)
-
-  const array = movie.genres.split(',')
-  console.log('swdw', [array.length-1])
-
-  const allGenres = array.map((genre, i) => {
-  	const last = i === array.length - 1
-  	return (
-  		<li key={i} className={`ratingPosition ${last ? 'borderItem': 'mr-0 pr-0'}`}>
-  			{genre}{!last && <span>,&nbsp;</span>} 
-	  	</li>
-	  )
-	})
 
 	return(
 		<>
@@ -53,18 +42,24 @@ const MovieDetails = ({id}) => {
 					</nav>			
 				</div>
 			</header>
-			<section className="description descriptionPoster" style={{ backgroundImage: `linear-gradient(to left, rgba(0, 0, 0, 0.2), 50%, rgba(0, 0, 0, 1)), url(${movie.posters.backdrops[0].link}) `}}>
+			<section 
+				className="description descriptionPoster" 
+				style={{ 
+					backgroundImage: `linear-gradient(to left, rgba(0, 0, 0, 0.2), 50%, rgba(0, 0, 0, 1)), 
+					url(${movie.posters.backdrops[0].link})`
+				}}
+			>
 				<div className='content'>
 					<div className="film">
 						<h1 className="filmTitle">{movie.title}</h1>
 						<div className="tags tagsPosition">
-							<div className="rating ratingPosition raitingMargin">
+							<div className="ratingDetails">
 				  			<p>
 				  				<span className="textButtonPosition">IMDb</span><span>{movie.imDbRating}</span>
 				  			</p>
 				  		</div>
 				  		<ul className="infoList">
-					  		{allGenres}
+					  		<AllGenres movie={movie} classes="ratingPosition  borderItem" />
 					  		<li className="ratingPosition  borderItem">{movie.type}</li>
 					  		<li className="ratingPosition ">{movie.year}</li>
 					  	</ul>
@@ -76,7 +71,6 @@ const MovieDetails = ({id}) => {
 								Watch
 							</span>
 						</button>
-						{console.log(movie)}
             <Modal
           		header={false}
               visible={isModal}
@@ -115,9 +109,7 @@ const MovieDetails = ({id}) => {
 					</div>
 				</div>
 			</section>
-			<footer className="footer">
-				Richbee Shows
-			</footer>
+			
 		</>
 	)
 }
