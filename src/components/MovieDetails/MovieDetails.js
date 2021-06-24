@@ -1,28 +1,29 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from "react-router-dom";
 import Modal from "../Modal";
 import Similar from "../Similar/";
 import AllGenres from "../AllGenres";
+import GotService from '../../services';
+
 
 import './style.css';
 // тестовый файл для подстановки данных
 // import result from '../../data.js'; 
 
+const MovieDetails = ({id}) => {
+	useEffect(() => {
+		const getMovie = async (id) => {
 
-const MovieDetails = ({id, workingKey}) => {
-	console.log('workingKey', workingKey)
-	const fetchMovie = (id, workingKey) => {
-		return fetch(`https://imdb-api.com/en/API/Title/${workingKey}/${id}/FullActor,Posters,Trailers`)
-			.then(res => res.json())
-			.then(result => setMovie(result))
-			// тестовый файл для подстановки данных
-		// setMovie(result) 
-	}
+			const data = new GotService();
+			const movieById = await data.getMoviesById( id )
+			setMovie(movieById)  // setMovie установит в mov => значение movie; const [mov, setMovie] = useState()
+		};
+		getMovie(id)
+	}, []);  //[] вторым аргументом у useEffect позволяет вызываться ф-ии 1 раз
 
 	const [movie, setMovie] = useState()
 	const [isModal, setModal] = useState(false)
 	if (!movie) {
-		fetchMovie(id, workingKey)
 		return null
 	}
   const onClose = () => setModal(false)
@@ -35,7 +36,7 @@ const MovieDetails = ({id, workingKey}) => {
 		  			<Link to="/"><div className="logo"></div></Link>
 						<form className='headerSearch'>
 							<input type="text" placeholder='Type here smth...'/>
-							<button type="submit"  >
+							<button type="submit" >
 								<i className="fa fa-search"></i>
 							</button>
 						</form>
@@ -59,7 +60,7 @@ const MovieDetails = ({id, workingKey}) => {
 				  			</p>
 				  		</div>
 				  		<ul className="infoList">
-					  		<AllGenres movie={movie} classes="ratingPosition  borderItem" />
+					  		<AllGenres movie={movie} classes="ratingPosition borderItem"/>
 					  		<li className="ratingPosition  borderItem">{movie.type}</li>
 					  		<li className="ratingPosition ">{movie.year}</li>
 					  	</ul>

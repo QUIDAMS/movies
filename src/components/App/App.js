@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import GotService from '../../services';
 
 import List from '../List';
 import {
@@ -7,68 +8,34 @@ import {
   Route,
 } from "react-router-dom";
 import MovieDetails from '../MovieDetails';
-import result from '../../data.js'
 import './index.css';
+// import result from '../../data.js' // файл с тестовыми данными
 
 export default class  App extends Component {
+
 	constructor(props){
 		super(props);
 		this.state = {
 			error: null,
       movies: [],
-      movieId: null,
       value: '',
-      apiKeys: [
-      	'k_kjosvy72', 'k_axtondoz', 'k_6saccxi8', 'k_fzfbn315', 
-      	'k_sjo9zj6q', 'k_80c8bkdg', 'k_96ufdk3y'
-      ],
-      workingKey: null,
-      retries: 0 
 		}
 	}
 
-
-	getMovies = (e) => {
-		const { apiKeys, value, retries } = this.state;
-		e.preventDefault()
-    fetch(`https://imdb-api.com/en/API/SearchTitle/${apiKeys[retries]}/${value}`)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          if(result.errorMessage !== '' && retries < apiKeys.length) {
-          	console.log('workingKey', result)
-        		this.setState({ movies: [], retries: retries + 1 })
-        		return this.getMovies(e)
-          } else {
-          	this.setState({ workingKey: apiKeys[retries] })
-						
-          }
-        	result.results.map(result => 
-          fetch(`https://imdb-api.com/en/API/Title/${apiKeys[retries]}/${result.id}/FullActor,Posters,Trailers`)
-          	.then(res => res.json())
-          	.then(
-          	(result) => {
-          		this.setState((prevState) => ({ movies: [...prevState.movies, result] }))
-        		
-
-          	}
-        	)
-        )},
-
-        (error) => {
-          this.setState({
-            error
-          });
-        }
-      )
-  }
+	async getMovies (e) {
+		const {  value  } = this.state;
+		e.preventDefault();
+		const data = new GotService();
+		const movies = await data.getMovies( value )
+		this.setState({ movies: movies })
+	}
 
   changeSearch = (e) => {
   	this.setState({value: e.target.value})
   }
 
 	render(){
-		const { error, movies, value, workingKey } = this.state;
+		const { error, movies, value } = this.state;
     if (error) {
       return <div>Ошибка: {error.message}</div>;
     } else {
@@ -78,7 +45,6 @@ export default class  App extends Component {
 						<Switch>
 							<Route path='/' exact >
 								<div className="container">
-
 							  	<div className="container-video" >
 				            <video autoPlay="autoplay" loop="loop" muted className='video' >
 				              <source 
@@ -99,14 +65,13 @@ export default class  App extends Component {
 														  	placeholder="Type here smth..."
 														  	onChange={this.changeSearch}
 														  />
-														  <button type="submit" onClick={this.getMovies} >
+														  <button type="submit" onClick={(e) => this.getMovies(e)} >
 														  </button>
 													  </form>
 													</div>
 												</div>
 			                </div>
 							        <div>
-
 												{movies && movies.map(movie => <List movie={movie}/>)}
 											</div>
 				            </div>
@@ -115,7 +80,7 @@ export default class  App extends Component {
 							</Route>
 							<Route path='/movies/:id' render={
 	              (elem) => {
-	                return <MovieDetails id={elem.match.params.id} workingKey={workingKey}/>
+	                return <MovieDetails id={elem.match.params.id} />
 	              } 
 	            }/>
 			      </Switch>
@@ -128,4 +93,38 @@ export default class  App extends Component {
 		}
 	}
 }
+
+// getMovies = (e) => {
+// 		const { apiKeys, value, retries } = this.state;
+// 		e.preventDefault()
+//     fetch(`https://imdb-api.com/en/API/SearchTitle/${apiKeys[retries]}/${value}`)
+//       .then(res => res.json())
+//       .then(
+//         (result) => {
+//           if(result.errorMessage !== '' && retries < apiKeys.length) {
+//         		this.setState({ movies: [], retries: retries + 1 })
+//         		return this.getMovies(e)
+//           } else {
+//           	this.setState({ workingKey: apiKeys[retries] })
+						
+//           }
+//         	result.results.map(result => 
+//           fetch(`https://imdb-api.com/en/API/Title/${apiKeys[retries]}/${result.id}/FullActor,Posters,Trailers`)
+//           	.then(res => res.json())
+//           	.then(
+//           	(result) => {
+//           		this.setState((prevState) => ({ movies: [...prevState.movies, result] }))
+        		
+
+//           	}
+//         	)
+//         )},
+
+//         (error) => {
+//           this.setState({
+//             error
+//           });
+//         }
+//       )
+//   }
   
