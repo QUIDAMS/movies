@@ -89,6 +89,10 @@
 	display: inline; 
 
 }
+/*.genresitem :last-child  {
+  border-right: 1px solid #FBFBFB; 
+  margin-bottom: 10px;
+}*/
 
 .ratingMargin {
 	margin-bottom: 15px;
