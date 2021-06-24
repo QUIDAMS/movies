@@ -72,7 +72,7 @@ export default class  App extends Component {
 												</div>
 			                </div>
 							        <div>
-												{movies && movies.map(movie => <List movie={movie}/>)}
+												{movies && movies.map(movie => <List key={movie.id} movie={movie}/>)}
 											</div>
 				            </div>
 					        </div>
@@ -80,6 +80,7 @@ export default class  App extends Component {
 							</Route>
 							<Route path='/movies/:id' render={
 	              (elem) => {
+	              	console.log('elem', elem)
 	                return <MovieDetails id={elem.match.params.id} />
 	              } 
 	            }/>

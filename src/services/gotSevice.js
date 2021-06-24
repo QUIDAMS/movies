@@ -3,8 +3,7 @@ export default class GotService {
   constructor(){
     this._apiBase = 'https://imdb-api.com/en/API';
     this.apiKeys = [
-      'k_axtondoz', 'k_oh6rc5hg', 'k_6saccxi8', 'k_fzfbn315', 
-      'k_j7k21h7v', 'k_80c8bkdg', 'k_96ufdk3y'
+      'k_6saccxi8', 'k_j7k21h7v', 'k_axtondoz',  'k_bcgyddx4'
     ];
     this.retries = 0;
   }

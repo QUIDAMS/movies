@@ -16,6 +16,7 @@ const MovieDetails = ({id}) => {
 
 			const data = new GotService();
 			const movieById = await data.getMoviesById( id )
+			console.log('movieById', movieById)
 			setMovie(movieById)  // setMovie установит в mov => значение movie; const [mov, setMovie] = useState()
 		};
 		getMovie(id)
