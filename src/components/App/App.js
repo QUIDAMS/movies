@@ -20,7 +20,7 @@ export default class  App extends Component {
 			error: null,
       movies: [],
       value: '',
-      loading: false,
+      loading: true,
 		}
 	}
 
