@@ -21,8 +21,11 @@ const List = ({movie}) => {
 			  	</div>
 			  	<ul className="infoList">
 			  		<li className="infoItem positionItemRight positionLeft576 borderItem">{movie.type}</li>
-			  		<AllGenres movie={movie} classes="infoItem positionItemRight positionLeft576 borderItem positionItemLeft" />
-			  		<li className="infoItem positionItemRight positionItemLeft">{movie.year}</li>
+			  		<li className="infoItem positionItemRight borderItem positionItemLeft">{movie.year}</li>
+			  		<AllGenres 
+			  			movie={movie} 
+			  			classes="infoItem positionItemLeft"
+			  		/>
 			  	</ul>
 			  	<hr className="line positionLine"/>
 			  	<p className="award positionLeft576">{movie.awards}</p>
