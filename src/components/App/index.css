@@ -507,6 +507,11 @@ li {
 	  background-color: rgba(0, 0, 0, 0.0);
  
 	}
+	#inTurnFadingTextG{
+		width:270px;
+		margin: 33%;
+	  margin-top: 15%;
+	}
 
 }
 
@@ -526,6 +531,11 @@ li {
 	h4 {
 		padding-left: 7px;
 		font-size: 18px;
+	}
+	#inTurnFadingTextG{
+		width:270px;
+		margin: 30%;
+	  margin-top: 15%;
 	}
 }
 
