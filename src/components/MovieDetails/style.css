@@ -26,6 +26,7 @@
 	content: 'Richbee Shows';
 }
 
+
 .headerSearch {
 	width: 50%;
 	margin: 0;
@@ -63,7 +64,6 @@
 .headerSearch button:hover {
 	color: #FAC539;
 }
-
 .description {
 	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.1), 80%, rgba(0, 0, 0, 1));
 }
@@ -89,10 +89,18 @@
 	display: inline; 
 
 }
-/*.genresitem :last-child  {
+.listRatingPosition {
+	padding-right: 2%;
+	font-weight: 600;
+	font-size: 24px;
+	line-height: 29px;
+	color: #FBFBFB;
+	display: inline; 
+}
+.genresitem :last-child  {
   border-right: 1px solid #FBFBFB; 
   margin-bottom: 10px;
-}*/
+}
 
 .ratingMargin {
 	margin-bottom: 15px;
@@ -151,7 +159,7 @@
   max-height: 50px;
   width: 100px;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   border-radius: 8px;
   font-size: 14px;
   background-color: #FAC539;
@@ -300,6 +308,9 @@
 	.ratingPosition{
 		font-size: 22px;
 	}
+	.listRatingPosition {
+		font-size: 22px;
+	}
 	.headerSearch input {
 		padding: 14px 0 14px 17%;
 		font-size: 16px;
@@ -319,6 +330,9 @@
 	}
 	.ratingPosition {
     font-size: 20px;
+	}
+	.listRatingPosition{
+		font-size: 20px;
 	}
 	.buttonWatch {
 		min-width: 160px;
@@ -389,10 +403,11 @@
     line-height: 45px;
 	}
 	.ratingPosition {
-    font-size: 16px;
+    /*font-size: 16px;*/
     margin-right: 14px;
     padding-right: 14px;
 	}
+
 	.awardFilm {
     font-size: 14px;
     font-weight: 400;

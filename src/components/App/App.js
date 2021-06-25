@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import GotService from '../../services';
+import Loading from '../Loading/';
 
 import List from '../List';
 import {
@@ -19,15 +20,20 @@ export default class  App extends Component {
 			error: null,
       movies: [],
       value: '',
+      loading: false,
 		}
 	}
 
 	async getMovies (e) {
-		const {  value  } = this.state;
-		e.preventDefault();
+		this.setState({movies: [], loading: true})
+		const {  value } = this.state;
+		if(e){
+			e.preventDefault();
+		}
+		
 		const data = new GotService();
 		const movies = await data.getMovies( value )
-		this.setState({ movies: movies })
+		this.setState({ loading: false, movies: movies })
 	}
 
   changeSearch = (e) => {
@@ -35,7 +41,7 @@ export default class  App extends Component {
   }
 
 	render(){
-		const { error, movies, value } = this.state;
+		const { error, movies, value, loading } = this.state;
     if (error) {
       return <div>Ошибка: {error.message}</div>;
     } else {
@@ -68,6 +74,7 @@ export default class  App extends Component {
 														  <button type="submit" onClick={(e) => this.getMovies(e)} >
 														  </button>
 													  </form>
+													  {loading && <Loading />}
 													</div>
 												</div>
 			                </div>
@@ -81,7 +88,12 @@ export default class  App extends Component {
 							<Route path='/movies/:id' render={
 	              (elem) => {
 	              	console.log('elem', elem)
-	                return <MovieDetails id={elem.match.params.id} />
+	                return <MovieDetails 
+	                	id={elem.match.params.id}
+	                	changeSearch={this.changeSearch}
+	                	getMovies={(e) => this.getMovies(e)}
+
+	                />
 	              } 
 	            }/>
 			      </Switch>

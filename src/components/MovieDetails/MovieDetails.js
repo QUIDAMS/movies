@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import Modal from "../Modal";
 import Similar from "../Similar/";
 import AllGenres from "../AllGenres";
@@ -10,7 +10,7 @@ import './style.css';
 // тестовый файл для подстановки данных
 // import result from '../../data.js'; 
 
-const MovieDetails = ({id}) => {
+const MovieDetails = ({id, changeSearch, getMovies}) => {
 	useEffect(() => {
 		const getMovie = async (id) => {
 
@@ -28,7 +28,10 @@ const MovieDetails = ({id}) => {
 		return null
 	}
   const onClose = () => setModal(false)
-
+  const redirect = () => {
+  	getMovies()
+  	return <Redirect to='/' />
+  }
 	return(
 		<>
 			<header className="header">
@@ -36,10 +39,16 @@ const MovieDetails = ({id}) => {
 					<nav className="nav">
 		  			<Link to="/"><div className="logo"></div></Link>
 						<form className='headerSearch'>
-							<input type="text" placeholder='Type here smth...'/>
-							<button type="submit" >
-								<i className="fa fa-search"></i>
-							</button>
+							<input 
+								type="text" 
+								placeholder='Type here smth...'
+								onChange={changeSearch}
+							/>
+							<Link to="/">
+								<button type="submit" onClick={e => redirect(e)} >
+									<i className="fa fa-search"></i>
+								</button>
+							</Link>
 						</form>
 					</nav>			
 				</div>
@@ -61,9 +70,12 @@ const MovieDetails = ({id}) => {
 				  			</p>
 				  		</div>
 				  		<ul className="infoList">
-					  		<AllGenres movie={movie} classes="ratingPosition borderItem"/>
-					  		<li className="ratingPosition  borderItem">{movie.type}</li>
-					  		<li className="ratingPosition ">{movie.year}</li>
+					  		<li className="ratingPosition borderItem ">{movie.year}</li>
+					  		<li className="ratingPosition borderItem ">{movie.type}</li>
+					  		<AllGenres 
+					  			movie={movie} 
+					  			classes="listRatingPosition" 
+					  		/>
 					  	</ul>
 						</div>
 						<button className="buttonWatch" onClick={() => setModal(true)}>
@@ -111,7 +123,6 @@ const MovieDetails = ({id}) => {
 					</div>
 				</div>
 			</section>
-			
 		</>
 	)
 }
