@@ -1,1 +1,0 @@
-[site is published at](https://quidams.github.io/movies/)
