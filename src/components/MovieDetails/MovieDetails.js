@@ -4,13 +4,14 @@ import Modal from "../Modal";
 import Similar from "../Similar/";
 import AllGenres from "../AllGenres";
 import GotService from '../../services';
-
+import SimpleSlider from '../Slider';
 
 import './style.css';
 // тестовый файл для подстановки данных
 // import result from '../../data.js'; 
 
 const MovieDetails = ({id, changeSearch, getMovies}) => {
+
 	useEffect(() => {
 		const getMovie = async (id) => {
 
@@ -32,6 +33,7 @@ const MovieDetails = ({id, changeSearch, getMovies}) => {
   	getMovies()
   	return <Redirect to='/' />
   }
+
 	return(
 		<>
 			<header className="header">
@@ -53,8 +55,69 @@ const MovieDetails = ({id, changeSearch, getMovies}) => {
 					</nav>			
 				</div>
 			</header>
+
 			<section 
-				className="description descriptionPoster" 
+				className=" descriptionPoster " 
+			>
+      	<SimpleSlider movie={movie} >
+	        	
+        	<div className="description">
+						<div className='content'>
+
+							<div className="film">
+								<h1 className="filmTitle">{movie.title}</h1>
+								<div className="tags tagsPosition">
+									<div className="ratingDetails">
+						  			<p>
+						  				<span className="textButtonPosition">IMDb</span><span>{movie.imDbRating}</span>
+						  			</p>
+						  		</div>
+						  		<ul className="infoList">
+							  		<li className="ratingPosition borderItem ">{movie.year}</li>
+							  		<li className="ratingPosition borderItem ">{movie.type}</li>
+							  		<AllGenres 
+							  			movie={movie} 
+							  			classes="listRatingPosition" 
+							  		/>
+							  	</ul>
+								</div>
+								<button className="buttonWatch" onClick={() => setModal(true)}>
+									<span 
+										className="buttonWatchText"
+									>
+										Watch
+									</span>
+								</button>
+		            <Modal
+		          		header={false}
+		              visible={isModal}
+		              onClose={onClose}
+		              content={	
+										<div>
+										  <div style={{position: 'relative', paddingTop: '56.25%'}}>
+										    <iframe 
+										    	src={movie.trailer.linkEmbed} 
+										    	frameborder="0" 
+										    	allowfullscreen
+										      style={{
+										      	position: 'absolute', 
+										      	top: 0, 
+										      	left: 0, 
+										      	width: 100 + '%', 
+										      	height: 100 + '%'
+										      }} />
+										  </div>
+										</div>
+									}
+		            />
+								<p className="awardFilm">{movie.awards}</p>
+							</div>
+						</div>
+					</div>
+      	</SimpleSlider>
+			</section>
+			<section 
+				className="description descriptionImage" 
 				style={{ 
 					backgroundImage: `linear-gradient(to left, rgba(0, 0, 0, 0.2), 50%, rgba(0, 0, 0, 1)), 
 					url(${movie.posters.backdrops[0].link})`
@@ -119,7 +182,7 @@ const MovieDetails = ({id, changeSearch, getMovies}) => {
 						<h5 className="alsoLike alsoLikePosition">You may also like</h5>
 					</div>
 					<div className="similarsBox similarsBoxPosition">
-						{movie.similars.map(similar => <Similar similar={similar}/>)}
+						{movie.similars.map(similar => <Similar key={similar.id} similar={similar} />)}
 					</div>
 				</div>
 			</section>
@@ -128,7 +191,3 @@ const MovieDetails = ({id, changeSearch, getMovies}) => {
 }
 
 export default MovieDetails;
-
-
-
-

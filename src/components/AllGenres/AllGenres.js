@@ -10,8 +10,7 @@ const AllGenres = ({ movie, classes, position}) => {
 		array.map((genre, i) => {
 			const last = i === array.length - 1;
 			return (
-				<li className={classes}>
-				
+				<li key={i} className={classes}>
 					{genre}{!last && <span>,&nbsp;</span> } 
 		  	</li>
 		  );

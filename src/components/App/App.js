@@ -87,8 +87,8 @@ export default class  App extends Component {
 							</Route>
 							<Route path='/movies/:id' render={
 	              (elem) => {
-	              	console.log('elem', elem)
 	                return <MovieDetails 
+	                	key={elem.match.params.id}
 	                	id={elem.match.params.id}
 	                	changeSearch={this.changeSearch}
 	                	getMovies={(e) => this.getMovies(e)}
@@ -107,37 +107,4 @@ export default class  App extends Component {
 	}
 }
 
-// getMovies = (e) => {
-// 		const { apiKeys, value, retries } = this.state;
-// 		e.preventDefault()
-//     fetch(`https://imdb-api.com/en/API/SearchTitle/${apiKeys[retries]}/${value}`)
-//       .then(res => res.json())
-//       .then(
-//         (result) => {
-//           if(result.errorMessage !== '' && retries < apiKeys.length) {
-//         		this.setState({ movies: [], retries: retries + 1 })
-//         		return this.getMovies(e)
-//           } else {
-//           	this.setState({ workingKey: apiKeys[retries] })
-						
-//           }
-//         	result.results.map(result => 
-//           fetch(`https://imdb-api.com/en/API/Title/${apiKeys[retries]}/${result.id}/FullActor,Posters,Trailers`)
-//           	.then(res => res.json())
-//           	.then(
-//           	(result) => {
-//           		this.setState((prevState) => ({ movies: [...prevState.movies, result] }))
-        		
-
-//           	}
-//         	)
-//         )},
-
-//         (error) => {
-//           this.setState({
-//             error
-//           });
-//         }
-//       )
-//   }
   
