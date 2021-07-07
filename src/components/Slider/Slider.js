@@ -11,8 +11,8 @@ export default function SimpleSlider({movie, children}) {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true,
+    autoplaySpeed: 5000,
     autoplay: true,
-    autoplaySpeed: 3000
   };
   const posters = movie.posters.backdrops.map(poster => {
     return(

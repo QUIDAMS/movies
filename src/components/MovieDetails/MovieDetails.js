@@ -17,7 +17,6 @@ const MovieDetails = ({id, changeSearch, getMovies}) => {
 
 			const data = new GotService();
 			const movieById = await data.getMoviesById( id )
-			console.log('movieById', movieById)
 			setMovie(movieById)  // setMovie установит в mov => значение movie; const [mov, setMovie] = useState()
 		};
 		getMovie(id)
@@ -29,11 +28,11 @@ const MovieDetails = ({id, changeSearch, getMovies}) => {
 		return null
 	}
   const onClose = () => setModal(false)
+ 
   const redirect = () => {
   	getMovies()
   	return <Redirect to='/' />
   }
-
 	return(
 		<>
 			<header className="header">
@@ -55,15 +54,10 @@ const MovieDetails = ({id, changeSearch, getMovies}) => {
 					</nav>			
 				</div>
 			</header>
-
-			<section 
-				className=" descriptionPoster " 
-			>
+			<section className=" descriptionPoster">
       	<SimpleSlider movie={movie} >
-	        	
         	<div className="description">
 						<div className='content'>
-
 							<div className="film">
 								<h1 className="filmTitle">{movie.title}</h1>
 								<div className="tags tagsPosition">
@@ -75,46 +69,49 @@ const MovieDetails = ({id, changeSearch, getMovies}) => {
 						  		<ul className="infoList">
 							  		<li className="ratingPosition borderItem ">{movie.year}</li>
 							  		<li className="ratingPosition borderItem ">{movie.type}</li>
-							  		<AllGenres 
-							  			movie={movie} 
-							  			classes="listRatingPosition" 
-							  		/>
+							  		<AllGenres movie={movie} classes="listRatingPosition" />
 							  	</ul>
 								</div>
 								<button className="buttonWatch" onClick={() => setModal(true)}>
-									<span 
-										className="buttonWatchText"
-									>
+									<span className="buttonWatchText">
 										Watch
 									</span>
 								</button>
-		            <Modal
-		          		header={false}
-		              visible={isModal}
-		              onClose={onClose}
-		              content={	
-										<div>
-										  <div style={{position: 'relative', paddingTop: '56.25%'}}>
-										    <iframe 
-										    	src={movie.trailer.linkEmbed} 
-										    	frameborder="0" 
-										    	allowfullscreen
-										      style={{
-										      	position: 'absolute', 
-										      	top: 0, 
-										      	left: 0, 
-										      	width: 100 + '%', 
-										      	height: 100 + '%'
-										      }} />
-										  </div>
-										</div>
-									}
-		            />
 								<p className="awardFilm">{movie.awards}</p>
 							</div>
 						</div>
 					</div>
       	</SimpleSlider>
+      	<Modal
+      		header={false}
+          visible={isModal}
+          onClose={onClose}
+          content={	
+						<div>
+						  <div className='aaaaa' style={{position: 'relative', paddingTop: '56.25%'}}>
+						    <iframe 
+						    	src={`${movie.trailer.linkEmbed}?autoplay=false&width=854`} 
+						    	width="854" 
+						    	height="480"
+						    	allowfullscreen="true" 
+						    	mozallowfullscreen="true" 
+						    	webkitallowfullscreen="true" 
+						    	frameborder="no" 
+						    	scrolling="no"
+						    	frameBorder="0" 
+						    	allowFullScreen
+						      style={{
+						      	position: 'absolute', 
+						      	top: 0, 
+						      	left: 0, 
+						      	width: 100 + '%', 
+						      	height: 100 + '%'
+						      }} >
+						      </iframe>
+						  </div>
+						</div>
+					}
+        />
 			</section>
 			<section 
 				className="description descriptionImage" 
@@ -142,9 +139,7 @@ const MovieDetails = ({id, changeSearch, getMovies}) => {
 					  	</ul>
 						</div>
 						<button className="buttonWatch" onClick={() => setModal(true)}>
-							<span 
-								className="buttonWatchText"
-							>
+							<span className="buttonWatchText">
 								Watch
 							</span>
 						</button>
@@ -154,18 +149,26 @@ const MovieDetails = ({id, changeSearch, getMovies}) => {
               onClose={onClose}
               content={	
 								<div>
-								  <div style={{position: 'relative', paddingTop: '56.25%'}}>
+								  <div className='aaaa' style={{position: 'relative', paddingTop: '56.25%'}}>
 								    <iframe 
-								    	src={movie.trailer.linkEmbed} 
-								    	frameborder="0" 
-								    	allowfullscreen
+								    	src={`${movie.trailer.linkEmbed}?autoplay=false&width=480`} 
+								    	width="480" 
+								    	height="270"
+								    	allowfullscreen="true" 
+								    	mozallowfullscreen="true" 
+								    	webkitallowfullscreen="true" 
+								    	frameborder="no" 
+								    	scrolling="no"
+								    	frameBorder="0" 
+								    	allowFullScreen
 								      style={{
 								      	position: 'absolute', 
 								      	top: 0, 
 								      	left: 0, 
 								      	width: 100 + '%', 
 								      	height: 100 + '%'
-								      }} />
+								      }} >
+								      </iframe>
 								  </div>
 								</div>
 							}
